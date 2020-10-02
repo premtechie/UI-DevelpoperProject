@@ -1,0 +1,165 @@
+.Head-Content{
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url('../../Asset/hero_img.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+}
+.side-content{
+    width: 29%;
+    padding: 30px 10px;
+    text-align: start;
+}
+.side-content h1{
+    font-size: 42px;
+}
+.side-content .reg{
+    display: none;
+}
+.form{
+    /* margin: 40px; */
+    width: 30%;
+    height: 260px;
+    padding: 30px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 0  0 2px rgb(255,255,255),0.3em 0.3em 1em rgba(0,0,0,0.3);
+    border-radius: 2px;
+
+
+}
+.form input{
+    border:1px solid gray;
+    width: 90%;
+    margin: 12px;
+    padding: 10px;
+}
+.form button{
+    margin: 10px 0;
+    padding: 10px 12px;
+    background-color:red;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.error{
+    color:red;
+    font-size: 12px;
+    width: 180px;
+}
+.register{
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.register p {
+    margin-left:20px ;
+    color:blue;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+.quote{
+    width:'45%';
+    margin:'10px auto';
+    height:'150px';
+    padding:'20px 0'
+}
+
+.center-content{
+    margin: 50px 0;
+    display: flex;
+    justify-content: space-around;
+}
+.inner-content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 20%;
+    text-align: start;
+}
+
+
+@media(max-width:700px){
+    .Head-Content{
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        background-image: none;
+        justify-content: flex-end;
+        height: 100%;
+        align-items: center;
+    }
+    .side-content{
+        color: honeydew;
+        height: 250px;
+        background-image: url('../../Asset/hero_img_mob.png');
+        background-repeat: no-repeat;
+        background-position:center;
+        width: 100%;
+        padding: 10px;
+        margin: 10px;
+        text-align: start;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+    }
+    .side-content h1{
+        margin-left: 20px;
+        font-size: 22px;
+        font-weight: 400;
+    }
+    .side-content .reg{
+        display: block;
+        margin-left: 20px;
+    }    
+    .side-content p{
+        display: none;
+    }
+    .form{
+        /* margin: 40px; */
+        width: 100%;
+        height: 260px;
+        padding: 30px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        box-shadow: 0 0  0 2px rgb(255,255,255),0.3em 0.3em 1em rgba(0,0,0,0.3);
+        border-radius: 2px;
+    
+    
+    }
+    .center-content{
+        margin: 50px 0;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .inner-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        text-align: center;
+    }
+    .quote{
+        width:90%;
+        margin: 10px auto;
+        text-align: center;
+        height:100%;
+        font-size: 12px;
+    }
+    
+}
+

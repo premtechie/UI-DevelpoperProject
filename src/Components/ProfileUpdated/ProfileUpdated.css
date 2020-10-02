@@ -1,0 +1,144 @@
+.profile-update{
+    background-color: whitesmoke;
+    padding: 3px 0;
+    display: flex;
+    height: 100%;
+}
+
+.profile1{
+    width: 18%;
+}
+.pro_1{
+    display: flex;
+    font-size: 12px;
+    line-height: 12px;
+    margin: 10px 20px;
+    justify-content: flex-start;
+    background-color: white;
+    padding: 5px 10px;
+    text-align: start;
+    border-radius: 4px;
+}
+.trade_1{
+    display: flex;
+    flex-flow: column;
+    margin: 10px 20px;
+    background-color: white;
+    text-align: start;
+}
+.sec_1{
+    border-bottom: 1px solid #ccc;
+}
+.comp_1{
+    padding: 5px 25px;
+    font-size: 14px;
+}
+.second_1{
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.personal-details_1{
+    width: 80%;
+    margin: 10px;
+    background-color: white;
+    text-align: start;
+    padding: 0;
+}
+.personal-details_1 .dashboard{
+    display: flex;
+    background-color: black;
+}
+.personal-details_1 .info{
+    padding: 0 30px;
+    font-size: 13px;
+}
+.address{
+    display: flex;
+    align-items: baseline;
+}
+.address label{
+    color: darkslategrey;
+    font-weight: bold;
+}
+.address p{
+    margin-left: 60px;
+    width: 280px;
+}
+.names{
+    display: flex;
+    align-items: center;
+    line-height: 14px;
+    height: 30px;
+}
+.names p{
+    width: 200px;
+}
+.names label{
+    width: 120px;
+    font-weight: bold;
+    color: darkslategrey;
+}
+.edit{
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+.edit p{
+    font-size:13px;
+    color:blue;
+    font-weight: bold;
+}
+.verification-details{
+    display: flex;
+    justify-content: space-between;
+}
+
+.verification-details img{
+    width: 200px;
+    margin: 0 50px;
+}
+
+.email, .mobile{
+    line-height: 13px;
+    font-size: 14px;
+    margin-left: 20px;
+    color: darkslategrey;
+    padding:0 10px;
+}
+.email span, .mobile span{
+    margin-left: 50px;
+    color:blue
+}
+@media(max-width:700px){
+    .profile1{
+        display: none;
+    }
+    .dashboard{
+        overflow-x: scroll;
+    }
+    .verification-details img{
+        display: none;
+    }
+    .personal-details_1{
+        width: 100%;
+        margin:20px 0;
+        background-color: inherit;
+        height: 100vh;
+    }
+    .edit{
+        background-color: white;
+    }
+    .info{
+        background-color: white;
+    }
+    .verification-details{
+        margin: 20px 0;
+        background-color: white;
+        padding: 10px 0;
+    }
+    .email, .mobile{
+        line-height: 20px;
+    }
+}

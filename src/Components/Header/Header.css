@@ -1,0 +1,49 @@
+.head{
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+.head .logo{
+    display: flex;
+    align-items: center;
+
+}
+.head .nav-item{
+    display: flex;
+    align-items: center;
+}
+.head input{
+    height: 30px;
+    margin:0 10px;
+    width: 300px;
+    padding: 0 10px;
+    border-radius: 3px;
+    border: inherit;
+}
+.head .nav-item p{
+    padding: 0 10px;
+    font-size: 14px;
+}
+
+.head .nav-item img{
+    width: 30px;
+    margin: 15px;
+}
+.head .nav-item button{
+    padding: 7px 10px;
+    background-color: red;
+    color: white;
+    border: inherit;
+    border-radius: 3px;
+}
+.sticky-header{
+    display: flex;
+    height: 50px;
+    font-size: 14px;
+    align-items: center;
+    padding: 0 20px;
+}
+.sticky-header div{
+    width: 150px;
+}

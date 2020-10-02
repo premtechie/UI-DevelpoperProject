@@ -1,0 +1,92 @@
+.profile-edit{
+    background-color: whitesmoke;
+    padding: 3px 0;
+    display: flex;
+    height: 100%;
+}
+
+.profile{
+    width: 18%;
+}
+.pro{
+    display: flex;
+    font-size: 12px;
+    line-height: 12px;
+    margin: 10px 20px;
+    justify-content: flex-start;
+    background-color: white;
+    padding: 5px 10px;
+    text-align: start;
+}
+.trade{
+    display: flex;
+    flex-flow: column;
+    margin: 10px 20px;
+    background-color: white;
+    text-align: start;
+}
+.sec{
+    border-bottom: 1px solid #ccc;
+}
+.comp{
+    padding: 5px 25px;
+    font-size: 14px;
+}
+.second{
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.personal-details{
+    width: 80%;
+    margin: 10px;
+    background-color: white;
+    text-align: start;
+    padding: 0 20px;
+}
+.personal-details h4{
+    margin: 20px 15px;
+}
+.form-details{
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.fields{
+    font-size: 11px;
+    display: flex;
+    flex-flow: column;
+    padding: 10px 15px;
+    font-weight: bold;
+    height: 65px;
+}
+.fields input{
+    padding: 8px 20px;
+    border:1px solid #ccc
+}
+.save-btn{
+    margin: 10px 20px;
+    display: block;
+}
+button{
+    cursor: pointer;
+}
+
+.save-btn button{
+    padding: 10px 27px;
+    background-color: red;
+    color: white;
+    border: inherit;
+    border-radius: 4px;
+}
+
+@media(max-width:700px){
+    .profile{
+        display: none;
+    }
+    .personal-details{
+        width: 100%;
+        margin: 0;
+    }
+}
