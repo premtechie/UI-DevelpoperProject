@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/UI-DevelpoperProject/static/css/main.c2fdac03.chunk.css",
+    "main.js": "/UI-DevelpoperProject/static/js/main.432b5abb.chunk.js",
+    "main.js.map": "/UI-DevelpoperProject/static/js/main.432b5abb.chunk.js.map",
+    "runtime-main.js": "/UI-DevelpoperProject/static/js/runtime-main.75008151.js",
+    "runtime-main.js.map": "/UI-DevelpoperProject/static/js/runtime-main.75008151.js.map",
+    "static/js/2.ad572ca1.chunk.js": "/UI-DevelpoperProject/static/js/2.ad572ca1.chunk.js",
+    "static/js/2.ad572ca1.chunk.js.map": "/UI-DevelpoperProject/static/js/2.ad572ca1.chunk.js.map",
+    "index.html": "/UI-DevelpoperProject/index.html",
+    "precache-manifest.69a8ddf6af61cfe0869c3ca177007349.js": "/UI-DevelpoperProject/precache-manifest.69a8ddf6af61cfe0869c3ca177007349.js",
+    "service-worker.js": "/UI-DevelpoperProject/service-worker.js",
+    "static/css/main.c2fdac03.chunk.css.map": "/UI-DevelpoperProject/static/css/main.c2fdac03.chunk.css.map",
+    "static/js/2.ad572ca1.chunk.js.LICENSE.txt": "/UI-DevelpoperProject/static/js/2.ad572ca1.chunk.js.LICENSE.txt",
+    "static/media/Add User-pana.svg": "/UI-DevelpoperProject/static/media/Add User-pana.95e563ca.svg",
+    "static/media/avatar.svg": "/UI-DevelpoperProject/static/media/avatar.e7a39327.svg",
+    "static/media/RegisterForm.css": "/UI-DevelpoperProject/static/media/hero_img_mob.fa07d692.png",
+    "static/media/icon_4.svg": "/UI-DevelpoperProject/static/media/icon_4.4b47f222.svg",
+    "static/media/icon_5.svg": "/UI-DevelpoperProject/static/media/icon_5.370a0e39.svg",
+    "static/media/icon_6.svg": "/UI-DevelpoperProject/static/media/icon_6.6ad7202f.svg",
+    "static/media/icon_7.svg": "/UI-DevelpoperProject/static/media/icon_7.681ab298.svg",
+    "static/media/icons_1.svg": "/UI-DevelpoperProject/static/media/icons_1.3b78e060.svg",
+    "static/media/icons_2.svg": "/UI-DevelpoperProject/static/media/icons_2.38fdc4a9.svg",
+    "static/media/icons_3.svg": "/UI-DevelpoperProject/static/media/icons_3.e0cc6763.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.75008151.js",
+    "static/js/2.ad572ca1.chunk.js",
+    "static/css/main.c2fdac03.chunk.css",
+    "static/js/main.432b5abb.chunk.js"
+  ]
+}
