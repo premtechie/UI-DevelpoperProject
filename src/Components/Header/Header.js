@@ -1,8 +1,10 @@
 import React from 'react';
 import logo from '../../Asset/logo.png';
 import './Header.css';
-import bag from '../../Asset/icon_6.svg';
-
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import PersonIcon from '@material-ui/icons/Person';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import {Link} from 'react-router-dom'
 export default function header(){
     return(
         <div>
@@ -12,16 +14,24 @@ export default function header(){
                     <input type='text' placeholder='Search for Product, brand and more' />
                 </div>
                 <div className='nav-item'>
-                    <p>Login/Register</p>
-                    <p>My Trade</p>
-                    <img src={bag} alt='' />
+                    <Link to='/' style={{textDecoration:'none',color:'white'}}>
+                        <p>Login/Register</p>
+                    </Link>   
+                    <div className='profile-icon'>
+                        <PersonIcon style={{fontSize:'20px',width:'17px'}} />
+                        <p>My Trade</p>
+                    </div>
+                        <ShoppingCartIcon style={{padding:'0 20px'}} />
                     <button>List an Item</button>
                 </div>
             </div>
             <div className='sticky-header'>
-                <div>
-                    <p style={{fontSize:'10px',lineHeight:'10px'}}>Location</p>
-                    <p style={{lineHeight:'10px'}}>Auckland,Nz</p>
+                <div style={{display:'flex',alignItems:'center'}}>
+                    <LocationOnIcon style={{width:'30px'}} />
+                    <div style={{width:'70px'}}>
+                        <p style={{fontSize:'10px',lineHeight:'5px'}}>Location</p>
+                        <p style={{lineHeight:'5px',fontSize:'10px'}}>Auckland,Nz</p>
+                    </div>
                 </div>
                 <div>View Category</div>
                 <div>MarketPlace</div>

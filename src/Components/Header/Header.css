@@ -22,10 +22,16 @@
     border: inherit;
 }
 .head .nav-item p{
-    padding: 0 10px;
-    font-size: 14px;
+    padding: 0 20px;
+    font-size: 13px;
 }
-
+.profile-icon{
+    display: flex;
+    align-items: center;
+}
+.nav-item .profile-icon p{
+    padding: 0 5px;
+}
 .head .nav-item img{
     width: 30px;
     margin: 15px;
@@ -36,6 +42,7 @@
     color: white;
     border: inherit;
     border-radius: 3px;
+    margin-left: 10px;
 }
 .sticky-header{
     display: flex;
@@ -45,5 +52,5 @@
     padding: 0 20px;
 }
 .sticky-header div{
-    width: 150px;
+    width: 130px;
 }

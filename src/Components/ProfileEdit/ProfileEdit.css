@@ -72,6 +72,10 @@
 button{
     cursor: pointer;
 }
+.validationError{
+    border: 1px solid red;
+    background-color: lightcoral;
+}
 
 .save-btn button{
     padding: 10px 27px;

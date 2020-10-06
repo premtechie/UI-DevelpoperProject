@@ -37,8 +37,19 @@
     padding: 10px 0;
     border-bottom: 1px solid #ccc;
 }
-
-
+.icon{
+    display: flex;
+    font-size: 12px;
+    line-height: 12px;
+    justify-content: space-between;
+    margin: 10px 20px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 4px;
+}
+.icon p{
+    padding-right:10px ;
+}
 .personal-details_1{
     width: 80%;
     margin: 10px;
@@ -89,6 +100,7 @@
     font-size:13px;
     color:blue;
     font-weight: bold;
+    cursor: pointer;
 }
 .verification-details{
     display: flex;
@@ -110,6 +122,30 @@
 .email span, .mobile span{
     margin-left: 50px;
     color:blue
+}
+.email div{
+    display: flex;
+    align-items: center;
+    height: 25px;
+}
+.email div p{
+    padding: 0 10px;
+    font-size: 12px;
+}
+.email span,.mobile span{
+    cursor: pointer;
+}
+.email input{
+    padding: 5px;
+    width: 50px;
+    border: 1px solid #ccc;
+}
+.email button{
+    padding: 6px 13px;
+    background-color: lawngreen;
+    border: none;
+    font-size: 12px;
+    margin: 0 20px;
 }
 @media(max-width:700px){
     .profile1{
@@ -141,4 +177,5 @@
     .email, .mobile{
         line-height: 20px;
     }
+   
 }

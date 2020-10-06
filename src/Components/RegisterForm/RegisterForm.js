@@ -5,19 +5,27 @@ import TextError from './TextError';
 import logo1 from '../../Asset/icons_1.svg'
 import logo2 from '../../Asset/icons_3.svg'
 import logo3 from '../../Asset/icons_2.svg'
-import request from '../axios';
+import axios from 'axios';
+import headers from '../headers';
+
+
+//--------------------initial for registers and logoin --------------
 
 const initialValues = {
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    checkbox:''
 }
-const load='Loading'
-const register='Register Now'
+
+//-----------------------------
+
 const initialLoginValues = {
     email:'',
     password:''
 }
+
+//--------------payload to be sent to API------------------------
 
 const getPayload = (values) => {
     return {
@@ -29,6 +37,7 @@ const getPayload = (values) => {
         "t_and_c": "true"
     }
 }
+//----------------payload to br sent to login API ------------------------------------
 
 const loginPayload = (values) => {
     return {
@@ -37,6 +46,8 @@ const loginPayload = (values) => {
         "captcha": "true"
     }
 }
+
+//-------------------field validations---------------------------------
 
 const validate = values => {
     let errors = {}
@@ -56,12 +67,18 @@ const validate = values => {
     if (values.password !== values.confirmPassword) {
         errors.confirmPassword = 'password doesnot match'
     }
+    if(!values.checkbox){
+        errors.checkbox = 'Required'
+    }
     return errors
 
 }
+
+//----------------------------login validations----------------------------------
+
+
 const loginValidate=values=>{
     let errors = {}
-    let passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
     if (!values.email) {
         errors.email = 'Required!'
     }
@@ -76,25 +93,35 @@ const loginValidate=values=>{
 
 
 export default function RegisterForm(props) {
-    const [loading,setLoading]=useState(false)
+
+    //----------state values------------------
+
     const [login,setLogin]=useState(true)
 
-    const onSubmit = values => {
-    request.post('eCommerce/eCommerce_API/test/test_registration/', getPayload(values)).then(res => {
-        console.log('RES : ', res);    
-    })
-    // const data=values.email
-    props.history.push('/editprofile',{email:values.email})  
+    //----------------submit handlers--------------------
 
+    const onSubmit = values => {
+        axios.post('http://dksinha.website/eCommerce/eCommerce_API/test/test_registration/',
+        getPayload(values),{headers}).
+            then(response=>{
+            props.history.push('/editprofile',{email:values.email,id:response.data.data[0].id})  
+        }).catch(error=>{
+            alert('Email already exist')
+    })
 }
+    //------------------------login handler--------------------
+
     const onLogin=values=>{
-        
-        request.post('eCommerce/eCommerce_API/test/test_login/',loginPayload(values)).then(res=>{
-            console.log('RES : ',res)
+        axios.post('http://dksinha.website/eCommerce/eCommerce_API/test/test_login/',
+        loginPayload(values),{headers}).
+            then(response=>{
+                props.history.push('/editprofile',{email:values.email,id:response.data.data.id})
+            }).catch(error=>{
+                alert('Invalid username or password')
         })
-        console.log('vales:',values)
-        props.history.push('/editprofile',{email:values.email})  
     }
+
+    //-----------------setstate handlers-------------------------
 
     const loginHandler=()=>{
         setLogin(false)
@@ -103,6 +130,7 @@ export default function RegisterForm(props) {
     const registerHandler=()=>{
         setLogin(true)
     }
+    
     return (
         <div>
             <div className='Head-Content'>
@@ -138,8 +166,14 @@ export default function RegisterForm(props) {
                             placeholder='Confirm Password'
                         />
                         <ErrorMessage name='confirmPassword' component={TextError} />
+                        <div className='check'>
+                            <Field className='check-box' type='checkbox' name='checkbox' id='checkbox' />
+                            <p>I agree to <span><a href='#'>Terms&Conditions</a></span>&<span><a href='#'>Privacy Policy</a></span></p>
+                        </div>
+                        <ErrorMessage name='checkbox' component={TextError} />
+
                         <div className='register'>
-                            <button type='submit'>{loading ?load:register}</button>
+                            <button type='submit'>Register Now</button>
                             <p onClick={loginHandler}>Existing User ? Login</p>
                         </div>
                     </Form>
@@ -150,13 +184,13 @@ export default function RegisterForm(props) {
                     onSubmit={onLogin}
                 >
                     <Form className='form'>
-                        <Field 
-                            type='email'
-                            id='email'
-                            name='email'
-                            placeholder='Enter email id'
-                        />
-                        <ErrorMessage name='name' component={TextError} />
+                            <Field 
+                                type='email'
+                                id='email'
+                                name='email'
+                                placeholder='Enter email id'
+                            />
+                            <ErrorMessage name='email' component={TextError} />                        
                         <Field 
                             type='password'
                             id='email'

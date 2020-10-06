@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './ProfileUpdated.css';
 import pro from '../../Asset/avatar.svg'
 import icon1 from '../../Asset/icon_7.svg'
@@ -6,14 +6,82 @@ import icon2 from '../../Asset/icon_6.svg'
 import icon3 from '../../Asset/icon_4.svg'
 import icon4 from '../../Asset/icon_5.svg'
 import img from '../../Asset/Add User-pana.svg'
-import {Link} from 'react-router-dom'
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import CallIcon from '@material-ui/icons/Call';
+import axios from 'axios';
+import {Formik,Field,Form} from 'formik';
+import headers from '../headers';
+
 
 export default function ProfileUpdated(props){
-    console.log(props)
-    const data={email:props.location.state.email}
+
+
+    //------------data to be sent to navigated pages---------------
+    
+    const data={email:props.location.state.email,
+        id:props.location.state.id
+    }
+
+    //--------edit profile datas----------------
+    
     const editHandler=()=>{
         props.history.push('/editprofile',data)
     }
+    
+    // ---------------------useState handlers-------------
+    
+    const [otpSent,setOTP]=useState(false)
+    const [verified,verify]=useState(false)
+
+    //-------------------api calls-----------------------------
+    
+    const emailVerificationHandler=()=>{
+        
+        const emailPayload=()=>{
+            return {
+                "id":props.location.state.id,
+                "email":props.location.state.email
+            }
+        }
+        axios.post('http://dksinha.website/eCommerce/eCommerce_API/test/test_email_generate_otp/',emailPayload(),{headers}).
+        then(response=>{
+            alert('OTP sent to the mail')
+            console.log(response)
+            setOTP(true)
+        })
+
+    }
+    
+    //-------------------initial values for form --------------------
+    
+    const initialValues={
+        text:''
+    }
+    
+    //--------------submit form------------------------
+
+    const onValidate=(values)=>{
+        const headers={
+            "X-API-KEY": "ds89fdfvcb87gf8dfdg87fdghgjh897",
+            "Authorization": "Basic YWRtaW46MTIzNA==",
+            "Content-Type": "application/json"
+        }
+        const otpPayload=(values)=>{
+            return {
+                "id": props.location.state.id,
+                "otp": values.text
+            }
+        }    
+        axios.post('http://dksinha.website/eCommerce/eCommerce_API/test/test_email_otp_validation/',otpPayload(values),{headers}).
+        then(response=>{
+            alert('Verified Successfully')
+            console.log('Response OTP : ', response.data)
+            setOTP(false)
+            verify(true)
+        })
+    }
+
+    
     return (
         <div className='profile-update'>
             <div className='profile1'>
@@ -49,21 +117,21 @@ export default function ProfileUpdated(props){
             </div>
             <div className='personal-details_1' >
                 <div className='dashboard'>
-                        <div className='pro_1'>
-                            <img src={icon1} style={{width:'35px',padding:'0 20px'}} alt='' />
-                            <p>Item sold<br/>23</p>
+                        <div className='icon'>
+                            <img src={icon1} style={{width:'35px',padding:'0 10px'}} alt='' />
+                            <p>Item sold<br/><strong>23</strong></p>
                         </div>
-                        <div className='pro_1'>
-                            <img src={icon2} style={{width:'35px',padding:'0 20px'}} alt='' />
-                            <p>Item buy<br/>0</p>
+                        <div className='icon'>
+                            <img src={icon2} style={{width:'35px',padding:'0 10px'}} alt='' />
+                            <p>Item buy<br/><strong>0</strong></p>
                         </div>
-                        <div className='pro_1'>
-                            <img src={icon3} style={{width:'35px',padding:'0 20px'}} alt='' />
-                            <p>Item posted<br/>12</p>
+                        <div className='icon'>
+                            <img src={icon3} style={{width:'35px',padding:'0 10px'}} alt='' />
+                            <p>Item posted<br/><strong>12</strong></p>
                         </div>
-                        <div className='pro_1'>
-                            <img src={icon4} style={{width:'35px',padding:'0 20px'}} alt='' />
-                            <p>Review<br/>4.3</p>
+                        <div className='icon'>
+                            <img src={icon4} style={{width:'35px',padding:'0 10px'}} alt='' />
+                            <p>Review<br/><strong>4.3</strong></p>
                         </div>
                 </div>
                 <div className='edit'>
@@ -85,7 +153,7 @@ export default function ProfileUpdated(props){
                     </div>
                     <div className='names'>
                         <label>Age</label>
-                        <p>18+</p>
+                        {props.location.state.checkbox?<p>18+</p>:<p>below 18</p>}
                     </div>
                     <div className='names'>
                         <label>Country</label>
@@ -99,12 +167,30 @@ export default function ProfileUpdated(props){
                 <div className='verification-details'>
                     <div className='verifications'>
                         <div className='email'>
-                            <h4>Email <span>Verify</span></h4>
-                            <p>{props.location.state.email}</p>
+                            <h4>Email {!verified ?<span onClick={emailVerificationHandler} >Verify</span>:<span>Verified</span>}</h4>
+                            <div>
+                                <MailOutlineIcon />
+                                <p>{props.location.state.email}</p>
+                                {otpSent ?
+                                    <Formik 
+                                        initialValues={initialValues}
+                                        onSubmit={onValidate}
+                                    >   
+                                        <Form>
+                                            <Field type='text' id='text' name='text' />
+                                            <button>Validate</button>
+                                        </Form>
+                                    </Formik>
+                                :null
+                                }
+                            </div>
                         </div>
                         <div className='mobile'>
                             <h4>Mobile number <span>Add</span></h4>
-                            <p>Add your mobile number</p>
+                            <div>
+                                <CallIcon />
+                                <p>Add your mobile number</p>
+                            </div>
                         </div>
                     </div>
                     <img src={img} alt='' />

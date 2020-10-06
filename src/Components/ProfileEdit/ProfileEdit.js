@@ -1,10 +1,13 @@
 import React from 'react';
 import './ProfileEdit.css';
 import pro from '../../Asset/avatar.svg'
-import {Link} from 'react-router-dom'
-import Checkbox from '../Checkbox';
 import {Formik,Form,Field,ErrorMessage } from 'formik'
 import TextError from '../RegisterForm/TextError';
+import axios from 'axios';
+import headers from '../headers';
+
+
+//----------------------initail values-------------------
 
 const initialValue={
     firstname:'',
@@ -15,9 +18,14 @@ const initialValue={
     suburb:'',
     towncity:'',
     postalcode:'',
+    checkbox:''
 }
+
+//-------------------validation for fields--------------------------
+
 const validate=values=>{
     let errors={}
+
     if(!values.firstname){
         errors.firstname='Required'
     }
@@ -50,19 +58,43 @@ const validate=values=>{
     }
     return errors;
 }
-
-
+    
 
 export default function ProfileEdit(props){
-    
-    const onSubmit=values=>{
-        const data={...values,email:props.location.state.email}
-        props.history.push('/profileupdate',data)
-        console.log('Form values',values)
-    }
-    console.log(initialValue,'Values')
-    console.log('email',props)
 
+    //--------------submit handlers----------------
+
+    const onSubmit=values=>{
+
+        
+        //-------------payload for the API---------------------------
+
+        const updateProfilePayload=(values)=>{
+            return{
+                "id":props.location.state.id,
+                "user_name": values.username,
+                "user_first_name": values.firstname,
+                "user_last_name": values.lastname,
+                "user_business_name": "abc pvt ltd",
+                "user_business_IRD_number": "123456789",
+                "user_business_type": "ABC"
+            }
+        }
+
+        // -------------------data for the navigation page-------------------
+
+        const data={...values,email:props.location.state.email,id:props.location.state.id}
+        
+        //---------------api call in the function---------------------
+
+        axios.post('http://dksinha.website/eCommerce/eCommerce_API/test/test_profile_update/',
+        updateProfilePayload(values),{headers}).
+            then(response=>{
+                props.history.push('/profileupdate',data)
+            })
+
+    }  
+    
     return (
         <div className='profile-edit'>
             <div className='profile'>
@@ -106,7 +138,7 @@ export default function ProfileEdit(props){
                 <Form className='form-details'>
                         <div className='fields'>
                             <label>FIRST NAME</label>
-                            <Field
+                            <Field className='inputs'
                                 type='text'
                                 name='firstname'
                                 id='firstname'
@@ -136,7 +168,7 @@ export default function ProfileEdit(props){
                         </div>
                         <div className='fields'>
                             <label>NZ ADDRESS FINDER</label>
-                            <Field
+                            <Field 
                                 type='text'
                                 name='nzAddressFinder'
                                 id='nzAddressFinder'
@@ -177,7 +209,7 @@ export default function ProfileEdit(props){
                         <div className='fields'>
                             <label>POSTCODE</label>
                             <Field
-                                style={{width:'30%'}}
+                                style={{width:'40%',padding:'10px'}}
                                 type='number'
                                 name='postalcode'
                                 id='postalcode'
@@ -186,8 +218,8 @@ export default function ProfileEdit(props){
                         </div>
                     <div>
                         <div style={{fontSize:'12px', margin:'10px 20px',display:'flex',alignItems:'center'}}>
-                            <Checkbox />
-                        <p style={{margin:'0 10px',width:'200px'}}>Are you above 18+</p> 
+                            <Field type='checkbox' name='checkbox' id='checkbox' />
+                            <p style={{margin:'0 10px',width:'200px'}}>Are you above 18+</p> 
                         </div>
                         <div className='save-btn'>
                                 <button type='submit'>
