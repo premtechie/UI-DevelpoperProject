@@ -43,7 +43,7 @@ export default function ProfileUpdated(props){
                 "email":props.location.state.email
             }
         }
-        axios.post('http://dksinha.website/eCommerce/eCommerce_API/test/test_email_generate_otp/',emailPayload(),{headers}).
+        axios.post('https://dksinha.website/eCommerce/eCommerce_API/test/test_email_generate_otp/',emailPayload(),{headers}).
         then(response=>{
             alert('OTP sent to the mail')
             console.log(response)
@@ -72,7 +72,7 @@ export default function ProfileUpdated(props){
                 "otp": values.text
             }
         }    
-        axios.post('http://dksinha.website/eCommerce/eCommerce_API/test/test_email_otp_validation/',otpPayload(values),{headers}).
+        axios.post('https://dksinha.website/eCommerce/eCommerce_API/test/test_email_otp_validation/',otpPayload(values),{headers}).
         then(response=>{
             alert('Verified Successfully')
             console.log('Response OTP : ', response.data)

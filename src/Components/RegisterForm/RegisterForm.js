@@ -112,7 +112,7 @@ export default function RegisterForm(props) {
     //------------------------login handler--------------------
 
     const onLogin=values=>{
-        axios.post('http://dksinha.website/eCommerce/eCommerce_API/test/test_login/',
+        axios.post('https://dksinha.website/eCommerce/eCommerce_API/test/test_login/',
         loginPayload(values),{headers}).
             then(response=>{
                 props.history.push('/editprofile',{email:values.email,id:response.data.data.id})

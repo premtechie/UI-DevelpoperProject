@@ -87,7 +87,7 @@ export default function ProfileEdit(props){
         
         //---------------api call in the function---------------------
 
-        axios.post('http://dksinha.website/eCommerce/eCommerce_API/test/test_profile_update/',
+        axios.post('https://dksinha.website/eCommerce/eCommerce_API/test/test_profile_update/',
         updateProfilePayload(values),{headers}).
             then(response=>{
                 props.history.push('/profileupdate',data)
